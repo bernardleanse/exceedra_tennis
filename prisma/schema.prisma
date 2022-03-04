@@ -11,9 +11,13 @@ datasource db {
 }
 
 model Player {
-  id           Int       @id @default(autoincrement())
-  firstName    String   
-  lastName     String
-  nationality  String
-  dateOfBirth  DateTime  @db.Date
+  id                Int @id @default(autoincrement())
+  firstName         String   
+  lastName          String
+  nationality       String
+  dateOfBirth       DateTime @db.Date
+  rankName          String
+  age               Int
+  points            Int
+  currentPosition   Int
 }
