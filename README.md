@@ -21,3 +21,9 @@ request was coming up undefined, turned out I had forgotten to do `app.use(expre
 next error was the fact that the date was sent as a string and was expecting date time. Solved by making the database commit wrap the `req.body.dateOfBirth` with `new Date`
 
 now refactor
+
+refactored to a class
+
+now to handle validation
+
+no identical first and last name
