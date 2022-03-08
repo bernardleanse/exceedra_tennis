@@ -27,3 +27,5 @@ refactored to a class
 now to handle validation
 
 no identical first and last name
+
+I could put full name as a column 
