@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +14,8 @@
     "@prisma/client": "^3.10.0",
     "express": "^4.17.3",
     "prisma": "^3.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
