@@ -18,7 +18,18 @@ class Player {
 
   }
 
-  static findManyPlayersMatchingRequestFullName(requestData) {
+  static validate(requestData) {
+    return this.playersMatchingRequestName(requestData)
+    .then(array => {
+      if(array.length >= 1) {
+        return true
+      } else {
+        return false
+      }
+    })
+  }
+
+  static playersMatchingRequestName(requestData) {
 
     return prisma.player.findMany({
       where: {

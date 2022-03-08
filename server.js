@@ -17,10 +17,10 @@ app.listen(port, () => {
 
 app.post('/players', (req, res) => {
 
-  Player.findManyPlayersMatchingRequestFullName(req.body)
-  .then(fields => {
-    if(fields.length >= 1){
-      res.status(400).json({ error: "Player already in Database" })
+  Player.validate(req.body)
+  .then(valid => {
+    if(valid){
+      res.status(400).json({ error: "Invalid" })
     } else {
       Player.create(req.body)
       .then(data => {
