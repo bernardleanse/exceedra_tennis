@@ -19,17 +19,10 @@ class Player {
   }
 
   static validate(requestData) {
-    return this.playersMatchingRequestName(requestData)
-    .then(array => {
-      if(array.length >= 1) {
-        return true
-      } else {
-        return false
-      }
-    })
+    return this.validName(requestData)
   }
 
-  static playersMatchingRequestName(requestData) {
+  static validName(requestData) {
 
     return prisma.player.findMany({
       where: {
@@ -39,6 +32,13 @@ class Player {
         lastName: {
           equals: requestData.lastName
         }
+      }
+    })
+    .then(results => {
+      if(results.length >= 1) {
+        return false
+      } else {
+        return true
       }
     })
 
