@@ -16,8 +16,8 @@ model Player {
   lastName          String
   nationality       String
   dateOfBirth       DateTime @db.Date
-  rankName          String
-  age               Int
-  points            Int
-  currentPosition   Int
+  rankName          String?
+  age               Int?
+  points            Int?
+  currentPosition   Int?
 }
