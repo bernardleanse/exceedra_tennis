@@ -13,7 +13,7 @@ class Player {
         lastName: requestData.lastName,
         nationality: requestData.lastName,
         dateOfBirth: new Date(requestData.dateOfBirth),
-        age: this.calculateAge(dob)
+        age: this.calculateAge(requestData.dateOfBirth)
       }
     }) 
 
