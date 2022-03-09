@@ -13,6 +13,7 @@ class Player {
         lastName: requestData.lastName,
         nationality: requestData.lastName,
         dateOfBirth: new Date(requestData.dateOfBirth),
+        age: this.calculateAge(dob)
       }
     }) 
 
@@ -41,7 +42,12 @@ class Player {
         return true
       }
     })
-
+  }
+  static calculateAge(dob){
+    const dateToday = new Date
+    const dateOfBirth = new Date(dob)
+    const differenceInMs = dateToday - dateOfBirth 
+    return parseInt(differenceInMs / (1000 * 60 * 60 * 24 * 365))
   }
 }
 

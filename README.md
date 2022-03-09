@@ -24,8 +24,6 @@ now refactor
 
 refactored to a class
 
-now to handle validation
+Testing by repeat submissions of the same postman data, I wrote a function to check if there is an entry with the same first name and last name, then added this to a validate function such as to add further validations down the line. I refactored a few times during this until happy with the implemntation while preserving functionality.
 
-no identical first and last name
 
-I could put full name as a column 
