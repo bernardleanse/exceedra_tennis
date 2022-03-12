@@ -26,4 +26,6 @@ refactored to a class
 
 Testing by repeat submissions of the same postman data, I wrote a function to check if there is an entry with the same first name and last name, then added this to a validate function such as to add further validations down the line. I refactored a few times during this until happy with the implemntation while preserving functionality.
 
+This was lucky as I then could easily extend this validation to check for the age being greater than or equal to 16. Age calculation was done by creating a function which used JS Date. 
+
 
