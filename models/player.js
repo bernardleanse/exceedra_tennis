@@ -19,8 +19,11 @@ class Player {
 
   }
 
-  static validate(requestData) {
-    return this.validName(requestData)
+  static async validate(requestData) {
+    const nameIsValid = await this.validName(requestData) 
+    const age = this.calculateAge(requestData.dateOfBirth)
+    const ageIsValid = this.validAge(age)
+    return nameIsValid && ageIsValid
   }
 
   static validName(requestData) {
@@ -43,9 +46,14 @@ class Player {
       }
     })
   }
+
+  static validAge(age) {
+    return age >= 16 
+  }
+
   static calculateAge(dob){
     const dateToday = new Date
-    const dateOfBirth = new Date(dob)
+    const dateOfBirth = new Date(dob) 
     const differenceInMs = dateToday - dateOfBirth 
     return parseInt(differenceInMs / (1000 * 60 * 60 * 24 * 365))
   }
