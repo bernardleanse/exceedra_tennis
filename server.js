@@ -4,6 +4,8 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 const app = express()
 const Player = require('./models/player')
+const { query } = require('express')
+const { process_params } = require('express/lib/router')
 
 app.use(express.json())
 
@@ -33,6 +35,10 @@ app.post('/players', (req, res) => {
 })
 
 app.get('/players', (req, res) => {
-  Player.all()
-  .then(data => res.send(data))
+  if (req.params) {
+    res.send("filtered response here.")
+  } else {
+    Player.all()
+    .then(data => res.send(data))  
+  }
 })
