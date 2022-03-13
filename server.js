@@ -40,10 +40,19 @@ app.get('/players', (req, res) => {
 
   if (paramsWereGiven) {
     Player.findBy(req.query)
+    .then(data => assignRank(data))
     .then(data => res.send(data))
+    
   } else {
     Player.all()
     .then(data => res.send(data))  
   }
 
 })
+
+const assignRank = (data) => {
+  console.log(data)
+}
+
+module.exports = assignRank
+
