@@ -16,32 +16,18 @@ app.listen(port, () => {
 })
 
 app.post('/players', (req, res) => {
-
   Player.validate(req.body)
-  
   .then(isValid => {
-
     if(!isValid){
-
       res.status(400).json({ error: "Invalid" })
-
     } else {
-
       Player.create(req.body)
-
       .then(data => {
-
         res.status(201).json({
-
-          status: "success",
+          status: "Success",
           data: data
-
         })
-
       })
-
     }
-
   })
-
 })
