@@ -20,4 +20,14 @@ model Player {
   age               Int?
   points            Int?
   currentPosition   Int?
+  matchesWon        Match[] @relation("Matches Won") 
+  matchesLost       Match[] @relation("Matches Lost")      
+}
+
+model Match {
+  id            Int @id @default(autoincrement())
+  winner        Player @relation("Matches Won", fields: [winnerId], references: [id])
+  winnerId      Int
+  loser         Player @relation("Matches Lost", fields: [loserId], references: [id])
+  loserId       Int
 }
