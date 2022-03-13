@@ -1,27 +1,32 @@
-const assignRank = require('../server.js')
+const { assignCurrentPosition } = require('../server.js')
 
 const dummyData = [
   {
-    data: 'some data'
+    data: 'some data',
+    rankName: 'Bronze'
   },
   {
     data: 'some more data'
   }
 ]
 
-const rankedData = [
+
+
+const positionedData = [
   {
-    rank: 1,
-    data: 'some data'
+    currentPosition: 1,
+    data: 'some data',
+    rankName: 'Bronze'
   },
   {
-    rank: 2,
+    currentPosition: 2,
     data: 'some more data'
   }
 ]
 
-describe(assignRank, () => {
+describe(assignCurrentPosition, () => {
   test('it gives a list of objects a rank ascending', () => {
-    expect(assignRank(dummyData)).toEqual(rankedData)
+    expect(assignCurrentPosition(dummyData)).toEqual(positionedData)
   })
+ 
 })
