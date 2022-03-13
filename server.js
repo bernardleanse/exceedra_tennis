@@ -35,10 +35,15 @@ app.post('/players', (req, res) => {
 })
 
 app.get('/players', (req, res) => {
-  if (req.params) {
-    res.send("filtered response here.")
+
+  const paramsWereGiven = Object.keys(req.query).length >= 1
+
+  if (paramsWereGiven) {
+    Player.findBy(req.query)
+    .then(data => res.send(data))
   } else {
     Player.all()
     .then(data => res.send(data))  
   }
+
 })
