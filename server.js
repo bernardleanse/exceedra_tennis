@@ -31,3 +31,7 @@ app.post('/players', (req, res) => {
     }
   })
 })
+
+app.get('/players', (req, res) => {
+  res.send("Players here:")
+})
