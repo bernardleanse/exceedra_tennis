@@ -1,18 +1,14 @@
-const Player = require('./models/player')
+const { PrismaClient } = require("@prisma/client");
 
-const data = {
-  firstName : "Babdgfhhhhfgdfhhhjdfgjy",
-  lastName : "Leanse",
-  nationality : "British",
-  dateOfBirth : "08/15/1996"
-}
+const prisma = new PrismaClient()
 
-Player.validate(data)
-// .then(res => console.log(res)) 
-
-// Player.validName(data)
-// .then(res => console.log(res))
-
-
-
-// console.log(Player.calculateAge("08/15/1996"))
+prisma.match.findMany({
+  where: {
+    id: 1
+  },
+  include: {
+    winner: true,
+    loser: true
+  }
+})
+.then(match => console.log(match))
