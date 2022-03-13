@@ -1,11 +1,9 @@
 const express = require('express')
 const port = 3001
 const { PrismaClient } = require('@prisma/client')
-const prisma = new PrismaClient()
 const app = express()
 const Player = require('./models/player')
-const { query } = require('express')
-const { process_params } = require('express/lib/router')
+const PlayerListManipulation = require('./classes/PlayerListManipulation')
 
 app.use(express.json())
 
@@ -40,26 +38,17 @@ app.get('/players', (req, res) => {
 
   if (paramsWereGiven) {
     Player.findBy(req.query)
-    .then(data => assignRank(data))
+    .then(data => PlayerListManipulation.sortData(data))
     .then(data => res.send(data))
     
   } else {
     Player.all()
-    .then(data => assignRank(data))
+    .then(data => PlayerListManipulation.sortData(data))
     .then(data => res.send(data))  
   }
 
 })
 
-const assignRank = (data) => {
-  let rank = 1
-  return data.map(data => {
-    let modified = { ...data, rank: rank }
-    rank += 1
-    return modified
-  })
- 
-}
 
-module.exports = assignRank
+
 
