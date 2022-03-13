@@ -45,13 +45,20 @@ app.get('/players', (req, res) => {
     
   } else {
     Player.all()
+    .then(data => assignRank(data))
     .then(data => res.send(data))  
   }
 
 })
 
 const assignRank = (data) => {
-  console.log(data)
+  let rank = 1
+  return data.map(data => {
+    let modified = { ...data, rank: rank }
+    rank += 1
+    return modified
+  })
+ 
 }
 
 module.exports = assignRank

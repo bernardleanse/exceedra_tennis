@@ -22,6 +22,6 @@ const rankedData = [
 
 describe(assignRank, () => {
   test('it gives a list of objects a rank ascending', () => {
-    expect(assignRank(dummyData)).toBe(rankedData)
+    expect(assignRank(dummyData)).toEqual(rankedData)
   })
 })
