@@ -1,9 +1,9 @@
 const express = require('express')
 const port = 3001
-const { PrismaClient } = require('@prisma/client')
 const app = express()
 const Player = require('./models/player')
 const PlayerListManipulation = require('./classes/PlayerListManipulation')
+const Match = require('./models/match')
 
 app.use(express.json())
 
@@ -47,6 +47,11 @@ app.get('/players', (req, res) => {
     .then(data => res.send(data))  
   }
 
+})
+
+app.post('/matches', (req, res) => {
+  console.log(req.body)
+  res.send("ok")
 })
 
 
