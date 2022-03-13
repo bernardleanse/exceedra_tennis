@@ -46,13 +46,22 @@ app.get('/players', (req, res) => {
     .then(data => PlayerListManipulation.sortData(data))
     .then(data => res.send(data))  
   }
-
 })
 
-app.post('/matches', (req, res) => {
-  console.log(req.body)
-  res.send("ok")
+app.post('/matches', async (req, res) => {
+  const winnerData = convertStringName(req.body.matchWinner)
+  const winner = await Player.findBy(winnerData)
+  const loserData = convertStringName(req.body.matchLoser)
+  const loser = await Player.findBy(loserData)
+  Match.create({ winner: winner[0], loser: loser[0] })
+  .then(match => res.send(match))
 })
+
+const convertStringName = (name) => {
+  const firstName = name.split(" ")[0]
+  const lastName = name.split(" ")[1]
+  return { firstName, lastName }
+} 
 
 
 
