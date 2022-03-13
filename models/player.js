@@ -5,8 +5,18 @@ class Player {
 
   constructor() {}
 
+  static findBy(data) {
+    return prisma.player.findMany({
+      where: data
+    })
+  }
+
   static async all() {
-    return prisma.player.findMany()
+    return prisma.player.findMany({
+      orderBy: [
+        { points: 'desc' }
+      ]
+    })
   }
 
   static async create(requestData) {
@@ -15,7 +25,7 @@ class Player {
       data: {
         firstName: requestData.firstName,
         lastName: requestData.lastName,
-        nationality: requestData.lastName,
+        nationality: requestData.nationality.toLowerCase(),
         dateOfBirth: new Date(requestData.dateOfBirth),
         age: this.calculateAge(requestData.dateOfBirth),
         points: 1200
