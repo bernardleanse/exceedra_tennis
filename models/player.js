@@ -5,6 +5,10 @@ class Player {
 
   constructor() {}
 
+  static async all() {
+    return prisma.player.findMany()
+  }
+
   static async create(requestData) {
 
     return prisma.player.create({
