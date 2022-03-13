@@ -28,4 +28,9 @@ Testing by repeat submissions of the same postman data, I wrote a function to ch
 
 This was lucky as I then could easily extend this validation to check for the age being greater than or equal to 16. Age calculation was done by creating a function which used JS Date. 
 
+I added a get route for /players, made it grab all records, then allowed query parameters to be passed to filter!
+Then I made them be ordered by points, and test drove a function to assign a rank position integer to the query results!
+
+
+
 
