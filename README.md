@@ -1,7 +1,7 @@
 ## How To Use
 
-Make sure you have the latest version of Node.js and node package manager
-Make sure you have postgresql locally `brew install postgresql'.
+Make sure you have the latest version of Node.js and node package manager.
+Make sure you have postgresql locally `brew install postgresql`.
 Clone repo.
 run `npm install`
 run `npm start`
