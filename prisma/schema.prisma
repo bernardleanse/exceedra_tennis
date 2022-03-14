@@ -21,7 +21,8 @@ model Player {
   points            Int?
   currentPosition   Int?
   matchesWon        Match[] @relation("Matches Won") 
-  matchesLost       Match[] @relation("Matches Lost")      
+  matchesLost       Match[] @relation("Matches Lost") 
+  matchesPlayed     Int     
 }
 
 model Match {
