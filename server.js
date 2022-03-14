@@ -4,6 +4,8 @@ const app = express()
 const Player = require('./models/player')
 const PlayerListManipulation = require('./classes/PlayerListManipulation')
 const Match = require('./models/match')
+const MatchSubmission = require('./classes/MatchSubmission')
+
 
 app.use(express.json())
 
@@ -49,19 +51,20 @@ app.get('/players', (req, res) => {
 })
 
 app.post('/matches', async (req, res) => {
-  const winnerData = convertStringName(req.body.matchWinner)
+  const winnerData = MatchSubmission.convertStringName(req.body.matchWinner)
   const winner = await Player.findBy(winnerData)
-  const loserData = convertStringName(req.body.matchLoser)
+  const loserData = MatchSubmission.convertStringName(req.body.matchLoser)
   const loser = await Player.findBy(loserData)
-  Match.create({ winner: winner[0], loser: loser[0] })
-  .then(match => res.send(match))
+  
+  try {
+    Match.create({ winner: winner[0], loser: loser[0] })
+    .then(match => MatchSubmission.handleMatchSubmission(match))
+    .then(result => res.send("success"))
+  } catch (err) {
+    res.status(400).json({ error: err })
+  }
 })
 
-const convertStringName = (name) => {
-  const firstName = name.split(" ")[0]
-  const lastName = name.split(" ")[1]
-  return { firstName, lastName }
-} 
 
 
 
