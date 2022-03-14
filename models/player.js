@@ -5,9 +5,22 @@ class Player {
 
   constructor() {}
 
+  static update(data) {
+    return prisma.player.update({
+      where: {
+        id: data.id
+      },
+      data: data
+    })
+  }
+
   static findBy(data) {
     return prisma.player.findMany({
-      where: data
+      where: data,
+      include: {
+        matchesWon: true,
+        matchesLost: true
+      }
     })
   }
 
@@ -28,7 +41,8 @@ class Player {
         nationality: requestData.nationality.toLowerCase(),
         dateOfBirth: new Date(requestData.dateOfBirth),
         age: this.calculateAge(requestData.dateOfBirth),
-        points: 1200
+        points: 1200,
+        matchesPlayed: 0
       }
     }) 
 
@@ -72,6 +86,7 @@ class Player {
     const differenceInMs = dateToday - dateOfBirth 
     return parseInt(differenceInMs / (1000 * 60 * 60 * 24 * 365))
   }
+
 }
 
 module.exports = Player
