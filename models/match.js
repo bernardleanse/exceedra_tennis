@@ -7,6 +7,10 @@ class Match {
       data: {
         winnerId: data.winner.id,
         loserId: data.loser.id
+      },
+      include: {
+        winner: true,
+        loser: true
       }
     })
   }
