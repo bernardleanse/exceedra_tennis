@@ -1,4 +1,4 @@
-const { filterOutUnranked } = require('../server.js')
+const PlayerListManipulation = require('../classes/PlayerListManipulation.js')
 
 const dummyData = [
   {
@@ -10,7 +10,6 @@ const dummyData = [
   }
 ]
 
-
 const filteredData = [
   {
     data: 'some data',
@@ -18,8 +17,8 @@ const filteredData = [
   }
 ]
 
-describe(filterOutUnranked, () => {
+describe(PlayerListManipulation, () => {
   test('only shows ranked', () => {
-    expect(filterOutUnranked(dummyData)).toEqual(filteredData)
+    expect(PlayerListManipulation.filterOutUnranked(dummyData)).toEqual(filteredData)
   })
 })
