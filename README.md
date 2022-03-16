@@ -1,22 +1,22 @@
 ## How To Use
 
-1. Make sure you have the latest version of Node.js and node package manager.
+- Make sure you have the latest version of Node.js and node package manager.
 
-2. Make sure you have postgresql locally `brew install postgresql`.
+- Make sure you have postgresql locally `brew install postgresql`.
 
-3. Clone repo.
+- Clone repo.
 
-4. run `npm install`.
+- run `npm install`.
 
-6. run 'touch .env'.
+- run `touch .env`.
 
-7. add `DATABASE_URL="postgresql://USERNAME@localhost:5432/tennis_api?schema=public"` code to the .env file, where it says USERNAME, type your own username instead. You can change `tennis_api` to a different name too if you need.
+- add `DATABASE_URL="postgresql://USERNAME@localhost:5432/tennis_api?schema=public"` code to the .env file, where it says USERNAME, type your own username instead. You can change `tennis_api` to a different name too if you need.
 
-8. run `npx prisma migrate dev` to run migrations.
+- run `npx prisma migrate dev` to run migrations.
 
-9. run `npm start` to start the server on localhost:3001
+- run `npm start` to start the server on localhost:3001
 
-Make Postman requests to "http://localhost:3001/"
+- Make Postman requests to "http://localhost:3001/"
 
 ## Process
 
