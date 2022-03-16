@@ -10,7 +10,7 @@
 
 - run `touch .env`.
 
-- run `echo "DATABASE_URL='postgresql://USERNAME@localhost:5432/tennis_api?schema=public' " >> .env` where it says USERNAME, type your own username instead. You can change `tennis_api` to a different name too if you need.
+- run `echo "DATABASE_URL='postgresql://USERNAME@localhost:5432/tennis_api?schema=public' " >> .env` where it says USERNAME, type your own local username instead. You can change `tennis_api` to a different name too if you need.
 
 - run `npx prisma migrate dev` to run migrations.
 
