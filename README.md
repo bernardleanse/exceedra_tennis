@@ -17,6 +17,27 @@
 - run `npm start` to start the server on localhost:3001
 
 - Make Postman requests to "http://localhost:3001/"
+- Create a player like by sending POST request with json body to "http://localhost:3001/players" like this: 
+```
+  {
+    "firstName": "Bernard",
+    "lastName": "Leanse",
+    "nationality": "British",
+    "dateOfBirth": "08/15/1994"
+}
+```
+- View all players by sending get request to "http://localhost:3001/players":
+- List players by specifics by adding query parameters eg "http://localhost:3001/players?nationality=British"
+- Create matches by seding POST request go "http://localhost:3001/matches" with json body:
+```
+{
+    "matchWinner": "Bernard Leanse",
+    "matchLoser": "Alex Annani"
+}
+```
+- When you re-view the players, when three games have been played, they will get assigned a rank. Ten percent of a match looser's points are added to the winner. Un ranked players appear below the ranked players but are still giving a current position relative to all the players as a whole
+
+
 
 ## Process
 
